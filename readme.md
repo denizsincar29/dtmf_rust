@@ -19,13 +19,14 @@ Once you have Rust and Cargo set up, you can use the following command to run th
 cargo run --release
 ```
 
-While running, let the program to listen some DTMF signals. E.g. open your phone's keypad, turn up the volume and press some keys. you will get them printed out in console.
+While running, let the program to listen some DTMF signals. E.g. open your phone's keypad, turn up the volume and press some keys. you will get them printed out in console.  
+Please note that the program does not currently support sound device selection and listing.
 
 # Note for screenreader users
 
 For some reason, if just 1 letter is printed into the console, NVDA doesn't read it. You need to manually check the output. Please suggest me how to improve this.
+UPD: as a workarround I added parentheses around the printed number.
 
-Please note that the program does not currently support sound device selection and listing.
 
 ## Contributing
 

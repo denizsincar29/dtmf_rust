@@ -53,7 +53,7 @@ fn main() {
         det.decode(convframe);
         let t=det.last_tone();
         if t!=ot {
-            if t!='n' {println!("{}", t);}
+            if t!='n' {println!("({})", t);}
             ot=t;
         }
         if let Ok(_) = rx.try_recv() {
