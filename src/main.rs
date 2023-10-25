@@ -38,12 +38,14 @@ impl Detector {
 
 
 fn main() {
+    println!("DTMF decoder, v1.0 by Deniz Sincar.");
     let (tx, rx)=channel();
     ctrlc::set_handler(move || tx.send(()).expect("Could not send signal on channel.")).unwrap();
     let frame_length = 512;
     let recorder = PvRecorderBuilder::new(frame_length).init().expect("can't init!");
     let mut det=Detector::new(recorder.sample_rate() as u32);
     recorder.start().expect("cannot start rec!");
+    println!("Recorder started. Ready to decode DTMF.");
     let mut ot='n';
     while recorder.is_recording() {
         let frame = recorder.read().expect("cannot read!");
