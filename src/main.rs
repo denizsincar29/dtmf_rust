@@ -55,10 +55,11 @@ fn main() {
     let (tx, rx) = channel();
     ctrlc::set_handler(move || tx.send(()).expect("Could not send signal on channel.")).unwrap();
     let frame_length = 512;
+    println!("{:?}", std::env::var("OUT_DIR"));
     let recorder = PvRecorderBuilder::new(frame_length)
-        .library_path(std::path::Path::new("libpv_recorder.dll"))
         .init()
         .expect("can't init!");
+    recorder.set_debug_logging(true);
     let mut det = Detector::new(recorder.sample_rate() as u32);
     recorder.start().expect("cannot start rec!");
     println!("Recorder started. Ready to decode DTMF.");

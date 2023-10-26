@@ -206,7 +206,8 @@ dependencies = [
 [[package]]
 name = "pv_recorder"
 version = "1.2.1"
-source = "git+https://github.com/denizsincar29/pvrecorder?branch=debug#386aeca3bcef9aab363c950b94f9ab68fdd3b7c9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "40be1d15bef993d0b923720589479d4d2e93e9fb6286328e2551f0fdbf45de31"
 dependencies = [
  "libc",
  "libloading",

@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 ctrlc = "3.4.1"
 dtmf = {git = "https://gitlab.com/SnejUgal/dtfm"}
-#pv_recorder = "1.2.1"
-pv_recorder = {git = "https://github.com/denizsincar29/pvrecorder", branch="debug"}
+pv_recorder = "1.2.1"
+#pv_recorder = {git = "https://github.com/denizsincar29/pvrecorder", branch="debug"}
 dasp = "0.11.0"
 
