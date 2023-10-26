@@ -1,0 +1,19 @@
+[tasks.build]
+description = "Runs the rust compiler."
+category = "Build"
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.get_dll]
+
+[tasks.get_dll.windows]
+script = '''
+echo cargo build --release
+if not exist dtmf_decoder\ ( mkdir dtmf_decoder )
+if not exist "dtmf_decoder\libpv_recorder.dll" ( for /r "target\release\build\" %%a in (*) do (if "%%~nxa"=="libpv_recorder.dll" ( copy /Y "%%~dpnxa" dtmf_decoder\ )))
+copy /Y "target\release\dtmf_rust.exe" "dtmf_decoder\"
+'''
+
+
+[tasks.release]
+dependencies = ["build", "get_dll"]

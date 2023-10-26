@@ -1,1 +1,4 @@
 /target
+/dtmf_decoder
+/*.zip
+*.dll
