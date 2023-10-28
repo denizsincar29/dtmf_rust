@@ -41,6 +41,7 @@ impl Detector {
     fn last_tone(&self) -> char {
         self.decoder.tone_change.tone
     }
+    #[allow(dead_code)]
     fn tones(&self) -> String {
         self.decoder.tone_change.tones.clone()
     }
@@ -50,13 +51,37 @@ impl Detector {
     }
 }
 
+
+use clap::Parser;
+
+#[derive(Parser)]
+#[command(author, version, about, long_about = None)]
+struct CLI {
+    /// Length of the frame in samples
+    #[arg(short, long, default_value_t=512)]
+    frame_len: i32,
+    /// Output device index. For default one, leave as blank.
+    #[arg(short, long, default_value_t=0)]
+    device: i32
+
+
+}
+
+
+
 fn main() {
+    let cli=CLI::parse();
     println!("DTMF decoder, v1.0 by Deniz Sincar.");
     let (tx, rx) = channel();
     ctrlc::set_handler(move || tx.send(()).expect("Could not send signal on channel.")).unwrap();
-    let frame_length = 512;
+    let frame_length = cli.frame_len;
     println!("{:?}", std::env::var("OUT_DIR"));
-    let recorder = PvRecorderBuilder::new(frame_length)
+    let mut bldr=PvRecorderBuilder::new(frame_length);
+    #[cfg(windows)]
+    bldr.library_path(std::path::Path::new("libpv_recorder.dll"));
+
+    
+    let recorder = bldr
         .init()
         .expect("can't init!");
     recorder.set_debug_logging(true);

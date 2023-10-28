@@ -11,4 +11,5 @@ dtmf = {git = "https://gitlab.com/SnejUgal/dtfm"}
 pv_recorder = "1.2.1"
 #pv_recorder = {git = "https://github.com/denizsincar29/pvrecorder", branch="debug"}
 dasp = "0.11.0"
+clap = { version = "4.4.7", features = ["derive"] }
 

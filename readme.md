@@ -13,12 +13,20 @@ cd dtmf_rust
 
 The program uses Cargo, the package manager and build system for Rust, to handle dependencies and build the project. Make sure you have Rust and Cargo installed on your system. You can install Rust by following the instructions provided on the [official Rust website](https://www.rust-lang.org/).
 
+It's recommended to use cargo make tool to build this package. Windows users are required to do this, because it will copy the dll file and the executable into dtmf_decoder directory. You can than ship this directory everywhere.  
+First, install cargo_make:
+
+```shell
+cargo install --force cargo-make
+```
+
 Once you have Rust and Cargo set up, you can use the following command to run the program in release mode:
 
 ```shell
-cargo run --release
+cargo make release
 ```
 
+linux and mac users can use the simple "cargo run --release", however I don't know how to ship the target binary, so any help would be appritiated.  
 While running, let the program to listen some DTMF signals. E.g. open your phone's keypad, turn up the volume and press some keys. you will get them printed out in console.  
 Please note that the program does not currently support sound device selection and listing.
 
