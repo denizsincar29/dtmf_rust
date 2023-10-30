@@ -1,0 +1,42 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'dtmf_rust'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=dtmf_rust",
+                    "--package=dtmf_rust"
+                ],
+                "filter": {
+                    "name": "dtmf_rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'dtmf_rust'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=dtmf_rust",
+                    "--package=dtmf_rust"
+                ],
+                "filter": {
+                    "name": "dtmf_rust",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
